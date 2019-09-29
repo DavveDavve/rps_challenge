@@ -8,3 +8,4 @@ Feature: Playing RPS
         Then I should see "Rock"
         And I should see "Paper"
         And I should see "Scissors"
+        When I click "Rock"
