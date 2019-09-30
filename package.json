@@ -2,7 +2,7 @@
   "name": "rps_challenge",
   "version": "1.0.0",
   "description": "User vs. Computer RPS",
-  "main": "src/app.js",
+  "main": "./src/js/rps.js",
   "repository": "https://github.com/DavveDavve/rps_challenge.git",
   "author": "David_Izosimov <David.Izosimov@gmail.com>",
   "license": "MIT",
@@ -14,6 +14,7 @@
     "babel-register": "^6.26.0",
     "chai": "^4.2.0",
     "cucumber": "^5.1.0",
+    "e2e_training_wheels": "0.0.36",
     "puppeteer": "^1.20.0",
     "superstatic": "^6.0.4",
     "webpack": "^4.41.0",
@@ -23,6 +24,13 @@
     "server": "superstatic -p 3000",
     "build": "webpack --progress --p --mode=production",
     "watch": "webpack --progress --watch --mode=development",
-    "cucumber": "superstatic -p 3000 2> /dev/null & cucumber-js; lsof -ti tcp:3000 | xargs kill"
+    "cucumber": "superstatic -p 3000 2> /dev/null & cucumber-js; lsof -ti tcp:3000 | xargs kill",  
+    "test": "npm run specs",
+    "specs": "mocha --recursive  --reporter=spec spec",
+    "stop-test-server": "lsof -ti tcp:$PORT | xargs kill"
+  },
+  "bin": {
+    "training-wheels:generate": "node ./node_modules/e2e_training_wheels/dist/generators.js",
+    "training-wheels:install": "node ./node_modules/e2e_training_wheels/dist/install.js"
   }
 }

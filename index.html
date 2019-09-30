@@ -1,52 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Rock, Paper, Scissors</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Puppeteer Mocha Scaffold</title>
+    <link rel="stylesheet" href="./css/stylesheet.css">
 </head>
-
 <body>
-    <div class="ui raised very padded text container segment">
-      <h1 class="ui header"><center>Contacts</center></h1>
-    
-    <button class="ui basic button add-contact">
-      <i class="icon user"></i>Add Contact</button>
-      
-      <form class="new-contact-form ui form" action="#">
-          <div class="field">
-              <label>Name</label>
-              <input type="text" name="name" id="contact-name">
-            </div>
-            <div class="field">
-              <label>Email</label>
-              <input type="email" name="email" id="contact-email">
-            </div>
-            <div class="field">
-              <label>Phone</label>
-              <input type="text" name="phone" id="contact-phone">
-            </div>
-            <div class="field">
-              <label>Company</label>
-              <input type="text" name="company" id="contact-company">
-            </div>
-            <div class="field">
-              <label>Notes</label>
-              <input type="text" name="notes" id="contact-notes">
-            </div>
-            <div class="field">
-              <label>Twitter</label>
-              <input type="text" name="twitter" id="contact-twitter">
-            </div>
-            <input class="ui button save-contact" type="submit" value="Save contact">
-            
-      </form>
-    
-      <div class="contact-list ui centered grid"></div>
-    </div>
-  <script src="./dist/bundle.js"></script>
-</body>
+    <div class="container">
 
+            <h1>Press a button to play!</h1>
+        <div class="button-row">
+            <button onclick="RPS('Rock')">Rock</button>
+            <button onclick="RPS('Paper')">Paper</button>
+            <button onclick="RPS('Scissors')">Scissors</button>
+        </div>
+
+        <div class="game-message-placement">
+            <div id="game-message">
+            </div>
+        </div>
+
+        <div class="scoreboard-placement">
+            <div id="scoreboard">
+                <p class="scoreboard-row" id="userWin">
+                    <strong>Your Victories: </strong>
+                    <span id="wins">0</span>
+                </p>
+                <p class="scoreboard-row" id="userDraw">
+                    <strong>Draws: </strong>
+                    <span id="draws">0</span>
+                </p>
+                <p class="scoreboard-row" id="computerWin">
+                    <strong>Your Losses: </strong>
+                    <span id="losses">0</span>
+                </p>
+            </div>
+        </div>
+
+        <button type="button" onClick="onClickReset()" id="reset-scores">Reset Scores</button>
+    </div>
+    <script src="./js/rps.js"></script>
+</body>
 </html>
+
