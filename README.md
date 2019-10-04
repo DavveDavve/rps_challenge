@@ -1,15 +1,9 @@
-As a user
-In order to know how the game works
-I would like to be able to read the game rules
+# Author:
+David Izosimov
 
-As a user
-In order to play the game
-I would like to be able to view a list possible options
-
-As a user
-In order to know how the game went
-I would like to be able to see the final outcome
-
-As a user
-In order to know who won
-I would like to be able to see a display of the winner
+# Acknowledgements:
+- https://codepen.io/TravisHi/pen/zrypXY
+- https://github.com/tachyonlabs/javascript-rock-paper-scissors/blob/master/rock-paper-scissors.html
+- https://www.w3schools.com/js/
+- https://www.w3schools.com/cssref/
+- CraftAcademy course documentation
