@@ -23,15 +23,15 @@ let scissorsBtn = document.getElementById('Scissors')
 
   function loss(userChoice) {
     computerWin++;
-    userLoseScore.innerHTML = computerWin.toString();
+    userLoseScore.innerHTML = computerWin;
     return outcomeDisplay.innerHTML = `You chose ${userChoice} ` + "and you lost! Watch out for those pesky robots!";
   }
 
   function onClickReset() {
     userWin = 0;
-    userWinScore.innerHTML = userWin.toString();
+    userWinScore.innerHTML = userWin;
     userDraw = 0;
-    drawScore.innerHTML = userDraw.toString();
+    drawScore.innerHTML = userDraw;
     computerWin = 0;
-    userLoseScore.innerHTML = computerWin.toString();
+    userLoseScore.innerHTML = computerWin;
   };
