@@ -6,7 +6,7 @@ function RPS(userChoice) {
 
   if (userChoice === computerChoice) {
       return draw(userChoice);
-  } else if (['RockScissors', 'PaperRock', 'ScissorsPaper'].indexOf(userChoice + computerChoice) != -1) {
+  } else if (['RockScissors', 'PaperRock', 'ScissorsPaper'].indexOf(userChoice + computerChoice)) {
       return win(userChoice);
   } else {
       return loss(userChoice);
