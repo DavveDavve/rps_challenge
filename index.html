@@ -12,9 +12,9 @@
 
             <h1>Press a button to play!</h1>
         <div class="button-row">
-            <button onclick="RPS('Rock')">Rock</button>
-            <button onclick="RPS('Paper')">Paper</button>
-            <button onclick="RPS('Scissors')">Scissors</button>
+            <button class="option" id="Rock" onclick="RPS('Rock')">Rock</button>
+            <button class="option" id="Paper" onclick="RPS('Paper')">Paper</button>
+            <button class="option" id="Scissors" onclick="RPS('Scissors')">Scissors</button>
         </div>
 
         <div class="game-message-placement">
@@ -22,8 +22,11 @@
             </div>
         </div>
 
+        <button type="button" onClick="onClickReset()" id="reset-scores">Reset Scores</button>
+
         <div class="scoreboard-placement">
             <div id="scoreboard">
+                <h2>Scoreboard</h2>
                 <p class="scoreboard-row" id="userWin">
                     <strong>Your Victories: </strong>
                     <span id="wins">0</span>
@@ -38,10 +41,9 @@
                 </p>
             </div>
         </div>
-
-        <button type="button" onClick="onClickReset()" id="reset-scores">Reset Scores</button>
     </div>
-    <script src="./js/rps.js"></script>
+    <script src="./src/js/rps.js"></script>
+    <script src="./src/js/app.js"></script>
 </body>
 </html>
 

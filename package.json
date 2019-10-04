@@ -24,10 +24,12 @@
     "server": "superstatic -p 3000",
     "build": "webpack --progress --p --mode=production",
     "watch": "webpack --progress --watch --mode=development",
-    "cucumber": "superstatic -p 3000 2> /dev/null & cucumber-js; lsof -ti tcp:3000 | xargs kill",  
-    "test": "npm run specs",
+    "cucumber": "superstatic -p 3000 2> /dev/null & cucumber-js; lsof -ti tcp:3000 | xargs kill",
+    "test": "npm run features && npm run specs",
     "specs": "mocha --recursive  --reporter=spec spec",
-    "stop-test-server": "lsof -ti tcp:$PORT | xargs kill"
+    "stop-test-server": "lsof -ti tcp:$PORT | xargs kill",
+    "features": "superstatic src -p 8080 & mocha --timeout 100000 --recursive  --reporter=spec features ; PORT=8080 npm run stop-test-server"
+
   },
   "bin": {
     "training-wheels:generate": "node ./node_modules/e2e_training_wheels/dist/generators.js",

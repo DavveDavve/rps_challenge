@@ -1,13 +1,10 @@
 const { setWorldConstructor } = require('cucumber')
 const { expect } = require('chai')
 const puppeteer = require('puppeteer')
-
 const HOME_PAGE = 'http://localhost:3000'
 
 class RPSWorld {
   constructor() {}
-
-  // Open the home page using puppeteer
   async openHomePage() {
     this.browser = await puppeteer.launch({headless: false, slowmo: 100})
     this.page = await this.browser.newPage()
@@ -15,41 +12,49 @@ class RPSWorld {
   }
 
   async closeHomePage() {
-      await this.browser.close()
+    await this.browser.close()
+  }
+
+  async pageHasStringContent(expectedContent) {
+      const pageContent = await this.page.content()
+      const actualContent = pageContent.match(expectedContent)[0]
+      expect(actualContent).to.be.eq(expectedContent)
+  }
+
+  async scoreHasScoreContent(expectedScore){
+    const pageContent = await this.page.content()
+    const actualScore = pageContent.match(expectedScore)[0]
+    expect(actualScore).to.be.eq(expectedScore)
+  }
+
+  async pageHasButtonContent(expectedString){
+      const pageContent = await this.page.content()
+      const actualString = pageContent.match(expectedString)[0]
+      expect(actualString).to.be.eq(expectedString)
   }
 
   async clickOnButton(btnName) {
-    const btnSelector = this.btnSelectorFromName(btnName.toLowerCase())
+    const btnSelector = this.btnSelectorFromName(btnName)
     await this.page.waitForSelector(btnSelector)
     await this.page.click(btnSelector)
-}
-
-btnSelectorFromName(btnName) {
-  switch (btnName) {
-      case 'rock':
-          return '#rock'
-          break
-      case 'paper':
-          return '#paper'
-          break 
-      case 'scissors':
-          return '#scissors'
-          break
-      default:
-          throw `${btnName} button is not defined`
-          break
   }
-}
 
-  async pageHasTextContent(expectedContent) {
-    const pageContent = await this.page.content()
-    const actualContent = pageContent.match(expectedContent)[0]
-
-    expect(actualContent).to.be.eq(expectedContent)
+  btnSelectorFromName(btnName) {
+    switch (btnName) {
+      case 'Rock':
+        return '#Rock'
+        break
+      case 'Paper':
+        return '#Paper'
+        break
+      case 'Scissors':
+        return '#Scissors'
+        break
+      default: 
+        throw `${btnName} button is not defined.`
+        break
+    }
   }
 }
 
 setWorldConstructor(RPSWorld)
-
-
-//&#9994-6 check for more different ones --> images

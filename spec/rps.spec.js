@@ -1,22 +1,41 @@
-require('../spec.helper')
-let rps = new RPS
-
-describe('RPS', () => {
-    rps
+describe('Rock Paper Scissor basic logic', () => {
+    let rps = new RPS
+    let rock = 1
+    let paper = 2
+    let scissors = 3
+    function RPS() {
+        this.check = (userChoice, ComputerChoice) => {
+            if ((userChoice==2 && ComputerChoice==1)
+            ||(userChoice==1 && ComputerChoice==3)
+            ||(userChoice==3 && ComputerChoice==2)){
+                return 'Win';
+            } else if ((userChoice==1 && ComputerChoice==2)
+            ||(userChoice==3 && ComputerChoice==1)
+            ||(userChoice==2 && ComputerChoice==3)) {
+                return 'Loss';
+            } else if (userChoice == ComputerChoice) {
+                return 'Draw'
+            };
+        }
+    }
+    it('rock wins over scissors', () => {
+        let userChoice = rock
+        let computerChoice = scissors
+        expect(rps.check(userChoice, computerChoice)).to.eql('Win')
+    })
+    it('paper wins over rock', () => {
+        let userChoice = paper
+        let computerChoice = rock
+        expect(rps.check(userChoice, computerChoice)).to.eql('Win')
+    }) 
+    it('paper loses to scissors', () => {
+        let userChoice = paper
+        let computerChoice = scissors
+        expect(rps.check(userChoice, computerChoice)).to.eql('Loss')
+    })
+    it('if user and computer have same choice', () => {
+        let userChoice = paper
+        let computerChoice = paper
+        expect(rps.check(userChoice, computerChoice)).to.eql('Draw')
+    })
 })
-
-    it('returns a number if no game rules are met', () => {
-        expect(fizzBuzz.check(1)).to.eql(1)
-    })
-
-    it('returns Fizz if number is divisible by 3', () => {
-        expect(fizzBuzz.check(3)).to.eql('Fizz')
-    })
-
-    it('returns Buzz if number is divisible by 5', () => {
-        expect(fizzBuzz.check(5)).to.eql('Buzz')
-    })
-
-    it('returns FizzBuzz if a number is divisible by 15', () => {
-        expect(fizzBuzz.check(15)).to.eql('FizzBuzz')
-    })

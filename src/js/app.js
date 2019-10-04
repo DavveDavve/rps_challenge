@@ -1,39 +1,37 @@
 let userWin = 0;
 let computerWin = 0;
 let userDraw = 0;
+let outcomeDisplay = document.getElementById('game-message')
+let drawScore = document.getElementById('draws')
+let userWinScore = document.getElementById('wins')
+let userLoseScore = document.getElementById('losses')
+let rockBtn = document.getElementById('Rock')
+let paperBtn = document.getElementById('Paper')
+let scissorsBtn = document.getElementById('Scissors')
 
-function RPS(userChoice) {
-    
-    let choiceStack = ['Rock', 'Paper', 'Scissors'];
-    let randomNum = Math.floor(Math.random() * 3);
-    let computerChoice = choiceStack[randomNum]; 
+  function draw(userChoice) {
+    userDraw++;
+    drawScore.innerHTML = userDraw;
+    return outcomeDisplay.innerHTML = `You chose ${userChoice} ` + "and it's a draw! Better luck next time!";
+  }
 
-    if (userChoice == computerChoice) {
-            document.getElementById('game-message').innerHTML = "It's a Draw!" + `The Computer chose ${computerChoice}!`;
-            userDraw++;
-            document.getElementById('draws').innerHTML = userDraw.toString();
-    } else if (["RockScissors", "PaperRock", "ScissorsPaper"].indexOf(userChoice + computerChoice) != -1) {
-            document.getElementById('game-message').innerHTML = "You Won!" + `The Computer chose ${computerChoice}!`;
-            ++userWin;
-            document.getElementById('wins').innerHTML = userWin.toString();
-    } else {
-            document.getElementById('game-message').innerHTML = "You Lost!" + `The Computer chose ${computerChoice}!`;
-            computerWin++;
-            document.getElementById('losses').innerHTML = computerWin.toString();
-    }
-}
+  function win(userChoice) {
+    userWin++;
+    userWinScore.innerHTML = userWin;
+    return outcomeDisplay.innerHTML = `You chose ${userChoice} ` + "and you won! You outsmarted the AI!";
+  }
 
-// 
-    function onClickReset() {
+  function loss(userChoice) {
+    computerWin++;
+    userLoseScore.innerHTML = computerWin.toString();
+    return outcomeDisplay.innerHTML = `You chose ${userChoice} ` + "and you lost! Watch out for those pesky robots!";
+  }
+
+  function onClickReset() {
     userWin = 0;
-    document.getElementById('wins').innerHTML = userWin.toString();
+    userWinScore.innerHTML = userWin.toString();
     userDraw = 0;
-    document.getElementById('draws').innerHTML = userDraw.toString();
+    drawScore.innerHTML = userDraw.toString();
     computerWin = 0;
-    document.getElementById('losses').innerHTML = computerWin.toString();
-};
-
-
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = RPS;
-} 
+    userLoseScore.innerHTML = computerWin.toString();
+  };
